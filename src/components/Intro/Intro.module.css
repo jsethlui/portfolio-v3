@@ -1,0 +1,55 @@
+
+.container {
+    text-align: left;
+    width: 70em;
+    max-width: 1000px;
+}
+
+.bold {
+    display: inline-block;
+    color: var(--mantine-color-indigo-4);
+}
+
+.linkedin_anchor {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--mantine-color-indigo-4);
+
+    position: relative;
+    top: 0;
+    transition: top ease 0.35s;
+
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 600;
+}
+
+.linkedin_anchor:hover {
+    top: -5px;
+}
+
+.name_header {
+    margin: 0 0 0 0;    /* top right bottom left */
+}
+
+.brief_header {
+    margin: 5px 0 0 0;
+
+    font-size: clamp(25px, 6vw, 50px);
+    line-height: 4.25rem;
+}
+
+.about {
+    margin: 20px 0 0px 0;
+    font-size: 20px;
+}
+
+.icon_container {
+    position: relative;
+    width: auto;
+    margin: 20px 0 0 0;
+}
+
+.icon {
+    position: relative;
+    margin-right: 20px;
+}

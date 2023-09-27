@@ -8,7 +8,7 @@ import './index.css'
 import '@mantine/core/styles.css'
 
 const theme = createTheme({
-  /** Put your mantine theme override here */
+  fontFamily: 'Roboto, sans-serif',
 });
 
 const router = createBrowserRouter([

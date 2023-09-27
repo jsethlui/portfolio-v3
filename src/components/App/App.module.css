@@ -1,0 +1,49 @@
+
+:global(#root) {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.underline_anchor {
+  position: relative;
+  display: inline-block;
+
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--mantine-color-indigo-4);
+  font-weight: 600;
+}
+
+.underline_anchor:after {
+  position: absolute;
+  height: 2px;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+
+  content: "";
+  display: block;
+
+  background: var(--mantine-color-indigo-4);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.underline_anchor:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+.icon_hover {
+  position: relative;
+  top: 0;
+
+  text-decoration: none;
+  cursor: pointer;
+  transition: top ease 0.35s;
+}
+
+.icon_hover:hover {
+  top: -5px;
+}
