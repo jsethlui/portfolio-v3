@@ -1,5 +1,10 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Poppins:wght@100;300;400;500;600;700;800&display=swap');
+
 :global(#root) {
+  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
+
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;

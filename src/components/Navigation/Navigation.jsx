@@ -6,7 +6,9 @@ function Navigation() {
 
     return (
         <div>
-            <Tabs>
+            <Tabs classNames={{ root: classes.root,
+                                panel: classes.list }}
+                  activateTabWithKeyboard={false}>
                 <Tabs.List>
 
                     <Tabs.Tab value="about">

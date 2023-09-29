@@ -1,8 +1,24 @@
 
 .container {
+    margin: 0px auto;
     text-align: left;
-    width: 70em;
-    max-width: 1000px;
+
+    height: 60vh;
+    max-width: 90%;
+}
+
+.text_container {
+    margin: 0 30px 0 0;
+    width: 40vw;
+}
+
+.image_container {
+    margin: 0 0 0 30px;
+    width: 30%;
+}
+
+.image {
+    box-shadow: rgba(145, 167, 255, 0.4) 5px 5px, rgba(145, 167, 255, 0.3) 10px 10px, rgba(145, 167, 255, 0.2) 15px 15px, rgba(145, 167, 255, 0.1) 20px 20px, rgba(145, 167, 255, 0.05) 25px 25px;
 }
 
 .bold {
@@ -11,6 +27,7 @@
 }
 
 .linkedin_anchor {
+    letter-spacing: -1px;
     text-decoration: none;
     cursor: pointer;
     color: var(--mantine-color-indigo-4);
@@ -19,7 +36,7 @@
     top: 0;
     transition: top ease 0.35s;
 
-    font-size: clamp(40px, 6vw, 80px);
+    font-size: clamp(30px, 6vw, 60px);
     font-weight: 600;
 }
 
@@ -27,26 +44,38 @@
     top: -5px;
 }
 
-.name_header {
-    margin: 0 0 0 0;    /* top right bottom left */
+.intro {
+    margin: 0 0 0 0;
+    font-size: clamp(25px, 6vw, 50px);
+    letter-spacing: -1px;
+    font-weight: 600;
 }
 
-.brief_header {
-    margin: 5px 0 0 0;
+.name {
+    display: flex;
+    text-align: center;
+}
 
-    font-size: clamp(25px, 6vw, 50px);
+.title {
+    margin: -30px 0 -10px 0;
+    width: 40vw;
+
+    letter-spacing: -1px;
+
+    color: var(--mantine-color-dark-2);
+    font-size: clamp(15px, 6vw, 30px);
+    font-weight: 600;
     line-height: 4.25rem;
 }
 
-.about {
-    margin: 20px 0 0px 0;
-    font-size: 20px;
+.brief {
+    width: 60vw;
 }
 
 .icon_container {
     position: relative;
     width: auto;
-    margin: 20px 0 0 0;
+    margin: 0 0 0 0;
 }
 
 .icon {
