@@ -1,0 +1,114 @@
+
+.container {
+    margin: 0px auto;
+    text-align: left;
+
+    @media (max-width: 1224px) and (orientation: portrait) {
+        margin: 200px 0 0 0;
+    }
+}
+
+.text_container {
+    margin: 0 30px 0 0;
+    width: 40vw;
+
+    @media (max-width: 1224px) and (orientation: portrait) {
+        width: 90%;
+    }
+}
+
+.image_container {
+    margin: 0 0 0 60px;
+    height: auto;
+    width: 30%;
+
+    @media (max-width: 1224px) and (orientation: portrait) {
+        margin: 0 auto;
+        width: 90%;
+        height: auto;
+    }
+}
+
+.image {
+    box-shadow: rgba(145, 167, 255, 0.4) 5px 5px,rgba(145, 167, 255, 0.3) 10px 10px, rgba(145, 167, 255, 0.2) 15px 15px, rgba(145, 167, 255, 0.1) 20px 20px, rgba(145, 167, 255, 0.05) 25px 25px;
+
+    @media (max-width: 1224px) and (orientation: portrait) {
+        box-shadow: rgba(145, 167, 255, 0.4) 0px 5px, rgba(145, 167, 255, 0.3) 0px 10px, rgba(145, 167, 255, 0.2) 0px 15px, rgba(145, 167, 255, 0.1) 0px 20px, rgba(145, 167, 255, 0.05) 0px 25px;
+    }
+}
+
+.bold {
+    display: inline-block;
+    color: var(--mantine-color-indigo-4);
+}
+
+.linkedin_anchor {
+    position: relative;
+    top: 0;
+    margin: 0 0 -10px 0;
+
+    font-size: clamp(30px, 6vw, 60px);
+    font-weight: 600;
+    letter-spacing: -1px;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--mantine-color-indigo-4);
+
+    transition: top ease 0.35s;
+}
+
+.linkedin_anchor:hover {
+    top: -5px;
+}
+
+.intro {
+    margin: 0 0 0 0;
+    font-size: clamp(25px, 6vw, 50px);
+    letter-spacing: -1px;
+    font-weight: 600;
+
+    @media (max-width: 1224px) and (orientation: portrait) {
+        margin: 10px 0 0 0;
+    }
+}
+
+.name {
+    display: flex;
+    text-align: center;
+}
+
+.title {
+    margin: -30px 0 -10px 0;
+    width: 40vw;
+
+    letter-spacing: -1px;
+
+    color: var(--mantine-color-dark-2);
+    font-size: clamp(15px, 6vw, 30px);
+    font-weight: 600;
+    line-height: 4.25rem;
+
+    @media (max-width: 1224px) and (orientation: portrait) {
+        width: 90%;
+    }
+}
+
+.brief {
+    width: 60vw;
+
+    @media (max-width: 1224px) and (orientation: portrait) {
+        text-align: left;
+        width: 100%;
+    }
+}
+
+.icon_container {
+    position: relative;
+    width: auto;
+    margin: 0 0 0 0;
+}
+
+.icon {
+    position: relative;
+    margin-right: 20px;
+}
