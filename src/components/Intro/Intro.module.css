@@ -1,6 +1,10 @@
 
 .container {
-    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 200px auto;
     text-align: left;
 
     @media (max-width: 1224px) and (orientation: portrait) {
@@ -45,7 +49,7 @@
 .linkedin_anchor {
     position: relative;
     top: 0;
-    margin: 0 0 -10px 0;
+    margin: 0 0 0 0;
 
     font-size: clamp(30px, 6vw, 60px);
     font-weight: 600;

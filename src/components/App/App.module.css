@@ -1,6 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Poppins:wght@100;300;400;500;600;700;800&display=swap');
-
+/*
 :global(#root) {
   font-family: 'Inter', sans-serif;
   font-family: 'Poppins', sans-serif;
@@ -8,7 +8,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
+} */
 
 .underline_anchor {
   position: relative;
@@ -39,15 +39,14 @@
   left: 0;
 }
 
-.icon_hover {
-  position: relative;
-  top: 0;
-
-  text-decoration: none;
-  cursor: pointer;
-  transition: top ease 0.35s;
+.intro {
+  position: absolute;
 }
 
-.icon_hover:hover {
-  top: -5px;
+.about {
+  position: absolute;
+}
+
+.footer {
+  position: absolute;
 }
