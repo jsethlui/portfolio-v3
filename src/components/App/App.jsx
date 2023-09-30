@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      {/* <Navigation /> */}
+      <Navigation />
       <Intro />
     </>
   );

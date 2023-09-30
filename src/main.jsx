@@ -1,15 +1,11 @@
+import '@mantine/core/styles.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './components/App/App.jsx'
 import Error from './components/Error/Error.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { MantineProvider, createTheme } from '@mantine/core'
+import { MantineProvider } from '@mantine/core'
 import './index.css'
-import '@mantine/core/styles.css'
-
-const theme = createTheme({
-  fontFamily: 'Roboto, sans-serif',
-});
 
 const router = createBrowserRouter([
   {
@@ -21,7 +17,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <MantineProvider theme={theme}>
+    <MantineProvider>
       <RouterProvider router={router} />
     </MantineProvider>
   </React.StrictMode>,

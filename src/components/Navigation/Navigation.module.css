@@ -1,14 +1,17 @@
 
 .root {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    right: 20px;
 }
 
-.list {
-    text-decoration: none;
-
-    border: none;
-    border-width: 0;
+.tab {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin: 0 10px 0 10px;
+    transition: all .2s ease-in;
 }
 
+.tab:hover {
+    color: var(--mantine-color-indigo-4);
+}

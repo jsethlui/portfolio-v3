@@ -19,8 +19,7 @@ function Intro() {
 
             <Group className={classes.text_container}>
                 <Group className={classes.name}>
-                    {/* @todo: convert Text Mantine component */}
-                    <p className={classes.intro}>Hi, I'm</p>
+                    <Text className={classes.intro}>Hi, I'm</Text>
 
                     <a className={classes.linkedin_anchor}
                     target="_blank"
@@ -30,7 +29,7 @@ function Intro() {
                 </Group>
 
                 <h2 className={classes.title}>
-                <Typewriter options={{ strings: ["Software Engineer", "Coffee Enthusiast", "Avid Learner"],
+                <Typewriter options={{ strings: ["Software Engineer", "Coffee Enthusiast"],
                                        autoStart: true,
                                        delay: 100,
                                        loop: true, }} />
