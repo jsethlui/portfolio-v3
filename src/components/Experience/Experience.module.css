@@ -1,0 +1,79 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list {
+    @media (max-width: 1224px) and (orientation: portrait) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+.itemLabel {
+    @media (max-width: 1224px) and (orientation: portrait) {
+        width: 90%;
+        font-size: 16px;
+    }
+}
+
+.panel {
+    text-align: left;
+    margin-left: 50px;
+
+    @media (max-width: 1224px) and (orientation: portrait) {
+        margin-left: 20px;
+    }
+}
+
+.tab {
+    margin: 25px 0 25px 0;
+}
+
+.tabLabel {
+    @media (max-width: 1224px) and (orientation: portrait) {
+        /* @todo: deprecate !important */
+        font-size: 13px !important;
+    }
+}
+
+.tabLabel {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.title {
+    @media (max-width: 1224px) and (orientation: portrait) {
+        margin: 10px 0 0 0;
+        font-size: 20px;
+    }
+}
+
+.date {
+    margin: 5px 0 5px 0;
+    font-weight: 500;
+    color: var(--mantine-color-dark-3);
+}
+
+.skills_container {
+    @media (max-width: 1224px) and (orientation: portrait) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.skill {
+    margin: 10px 7.5px 0 7.5px;
+    font-weight: 500;
+    color: var(--mantine-color-dark-3);
+}
+
+.career_misc_header {
+    margin: 5px 0 5px 0;
+    font-weight: 500;
+}

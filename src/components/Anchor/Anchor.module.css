@@ -1,0 +1,29 @@
+
+.anchor {
+    position: relative;
+    display: inline-block;
+
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--mantine-color-indigo-4);
+    font-weight: 600;
+  }
+
+.anchor:after {
+    position: absolute;
+    height: 2px;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+
+    content: "";
+    display: block;
+
+    background: var(--mantine-color-indigo-4);
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  }
+
+.anchor:hover:after {
+    width: 100%;
+    left: 0;
+  }
