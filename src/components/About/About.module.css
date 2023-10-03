@@ -6,21 +6,40 @@
 
     margin: 400px auto;
     text-align: left;
+
+    @media (max-width: 1224px) and (orientation: portrait) {
+
+    }
 }
 
 .image_container {
-    margin: 0 0 0 0;
     height: auto;
     width: 30%;
+    margin: 0 20px 0 0;
+
+    @media (max-width: 1224px) and (orientation: portrait) {
+        margin: 0 auto;
+        height: auto;
+        width: 70%;
+    }
 }
 
 .image {
     box-shadow: rgba(145, 167, 255, 0.4) -5px 5px, rgba(145, 167, 255, 0.3) -10px 10px, rgba(145, 167, 255, 0.2) -15px 15px, rgba(145, 167, 255, 0.1) -20px 20px, rgba(145, 167, 255, 0.05) -25px 25px;
+
+    @media (max-width: 1224px) and (orientation: portrait) {
+        box-shadow: rgba(145, 167, 255, 0.4) 0px 5px, rgba(145, 167, 255, 0.3) 0px 10px, rgba(145, 167, 255, 0.2) 0px 15px, rgba(145, 167, 255, 0.1) 0px 20px, rgba(145, 167, 255, 0.05) 0px 25px;
+    }
 }
 
 .about_container {
+    margin: 0 0 0 20px;
     text-align: left;
     width: 50%;
+
+    @media (max-width: 1224px) and (orientation: portrait) {
+        width: 75%;
+    }
 }
 
 .header {
