@@ -1,18 +1,20 @@
 
-// @todo: add mobiile responsive design
-
 import React from 'react'
-import { Group, Text, Image } from '@mantine/core'
-import global from '/src/components/App/App.module.css'
-import classes from '/src/components/Intro/Intro.module.css'
+import { Container, Group, Text, Image } from '@mantine/core'
 import avatar from '/src/assets/avatar.jpg'
 import Typewriter from 'typewriter-effect'
+import IconClickable from '/src/components/IconContainer/IconClickable.jsx'
+import IconContainer from '/src/components/IconContainer/IconContainer.jsx'
 import { UilLinkedin, UilGithub, UilEnvelopeAlt } from '@iconscout/react-unicons'
+import global from '/src/components/App/App.module.css'
+import classes from '/src/components/Intro/Intro.module.css'
 
 function Intro() {
 
     const iconSize = 35    // pixels
-    const iconColor = "var(--mantine-color-indigo-4)"
+    const allIcons = [<IconClickable icon={<UilLinkedin />} href="https://www.linkedin.com/in/jeremylouie98/" size={iconSize} />,
+                      <IconClickable icon={<UilGithub />} href="https://github.com/jsethlui" size={iconSize} />,
+                      <IconClickable icon={<UilEnvelopeAlt />} href="https://google.com" size={iconSize} />]
 
     return (
         <Group className={classes.container}>
@@ -39,25 +41,7 @@ function Intro() {
                     I previously developed C++ robototic algorithms at <a target="_blank" rel="noopener noreferrer" href="https://omafertility.com/" className={global.underline_anchor}>Oma Fertility</a> to improve in-vitro fertilization success rates. I'm looking to continue developing and delivering products.
                 </Text>
 
-                <Group className={classes.icon_container}>
-                    <a className={global.icon_hover}
-                    target="_blank"
-                    href="https://www.linkedin.com/in/jeremylouie98/">
-                        <UilLinkedin className={classes.icon} size={iconSize} color={iconColor} />
-                    </a>
-
-                    <a className={global.icon_hover}
-                    target="_blank"
-                    href="https://github.com/jsethlui">
-                        <UilGithub className={classes.icon} size={iconSize} color={iconColor} />
-                    </a>
-
-                    <a className={global.icon_hover}
-                    target="_blank"
-                    href="https://github.com/jsethlui">
-                        <UilEnvelopeAlt className={classes.icon} size={iconSize} color={iconColor} />
-                    </a>
-                </Group>
+                <IconContainer icons={allIcons} />
             </Group>
 
             <Group className={classes.image_container}>

@@ -1,0 +1,27 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    position: relative;
+    top: 0;
+    padding: 7.5px 25px 7.5px 25px;
+    margin: 0 25px 0 25px;
+
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--mantine-color-indigo-4);
+
+    border-radius: 10px;
+    border: 3px solid var(--mantine-color-indigo-4);
+    transition: all .2s ease-in;
+}
+
+.button:hover {
+    top: -3px;
+    color: var(--mantine-color-indigo-6);
+    border: 3px solid var(--mantine-color-indigo-6);
+}
