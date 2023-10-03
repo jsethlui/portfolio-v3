@@ -12,7 +12,7 @@ function App() {
       <Navigation />
       <Intro className={global.intro} />
       <About className={global.about} id="#about" />
-      {/* <Footer className={global.footer} /> */}
+      <Footer className={global.footer} />
     </>
   );
 }

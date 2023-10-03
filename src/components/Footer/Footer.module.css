@@ -1,8 +1,8 @@
 
 .container {
-    position: absolute;
-    bottom: 0;
-    background-color: green !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .button {
