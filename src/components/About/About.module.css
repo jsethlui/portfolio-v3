@@ -45,30 +45,3 @@
         width: 75%;
     }
 }
-
-.header {
-    display: flex;
-    align-items: center;
-}
-
-.header::before {
-    content: "";
-    display: block;
-    position: relative;
-    top: 0px;
-    width: 100px;
-    height: 3px;
-    margin-right: 10px;
-    background-color: var(--mantine-color-indigo-4);
-}
-
-.header::after {
-    content: "";
-    display: block;
-    position: relative;
-    top: 0px;
-    width: 100px;
-    height: 3px;
-    margin-left: 10px;
-    background-color: var(--mantine-color-indigo-4);
-}

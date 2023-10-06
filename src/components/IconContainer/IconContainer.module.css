@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
 
-    height: 100px;  /* @todo: make height value vary per screen size? */
+    height: 50px;  /* @todo: make height value vary per screen size? */
     width: auto;
 }
 
