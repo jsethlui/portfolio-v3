@@ -5,6 +5,7 @@ import avatar from '/src/assets/avatar.jpg'
 import Typewriter from 'typewriter-effect'
 import IconClickable from '/src/components/IconContainer/IconClickable.jsx'
 import IconContainer from '/src/components/IconContainer/IconContainer.jsx'
+import Anchor from '/src/components/Anchor/Anchor.jsx'
 import { UilLinkedin, UilGithub, UilEnvelopeAlt } from '@iconscout/react-unicons'
 import global from '/src/components/App/App.module.css'
 import classes from '/src/components/Intro/Intro.module.css'
@@ -22,7 +23,6 @@ function Intro() {
             <Group className={classes.text_container}>
                 <Group className={classes.name}>
                     <Text className={classes.intro}>Hi, I'm</Text>
-
                     <a className={classes.linkedin_anchor}
                     target="_blank"
                     href="https://www.linkedin.com/in/jeremylouie98/">
@@ -38,7 +38,7 @@ function Intro() {
                 </h2>
 
                 <Text className={classes.brief}>
-                    I previously developed C++ robototic algorithms at <a target="_blank" rel="noopener noreferrer" href="https://omafertility.com/" className={global.underline_anchor}>Oma Fertility</a> to improve in-vitro fertilization success rates. I'm looking to continue developing and delivering products.
+                    I previously developed C++ robototic algorithms at <Anchor href="https://omafertility.com/" title="Oma Robotics" /> to improve in-vitro fertilization success rates. I'm looking to continue developing and delivering products.
                 </Text>
 
                 <IconContainer icons={allIcons} />
