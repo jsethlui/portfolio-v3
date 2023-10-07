@@ -4,14 +4,6 @@
 .header {
   display: flex;
   align-items: center;
-
-  @media (max-width: 1224px) and (orientation: portrait) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    margin: 0;
-  }
 }
 
 .header::before {
@@ -41,4 +33,9 @@
   justify-content: center;
   align-items: center;
   margin: 0 0 30px 0;
+
+  @media (max-width: 1224px) and (orientation: portrait) {
+    margin: 0 auto;
+    width: 80%;
+  }
 }

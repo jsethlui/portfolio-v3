@@ -59,6 +59,7 @@ function Projects() {
                     </Text>
                 </Card>
             </Center>
+
         </Container>
     )
 }
