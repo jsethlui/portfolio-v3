@@ -26,6 +26,7 @@ function Experience() {
 
     return (
         <Container>
+            <Title order={1} className={[global.header, global.header_center].join(" ")}>Experience</Title>
             <Tabs color={tabsColor} classNames={classes} defaultValue="oma_robotics" orientation={isTabletOrMobile && isPortrait ? "horizontal" : "vertical"}>
                 <Tabs.List>
                     <Tabs.Tab value="oma_robotics">

@@ -1,23 +1,41 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Poppins:wght@100;300;400;500;600;700;800&display=swap');
-/*
-:global(#root) {
-  font-family: 'Inter', sans-serif;
-  font-family: 'Poppins', sans-serif;
 
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-} */
-
-.intro {
-  position: absolute;
+.header {
+  display: flex;
+  align-items: center;
 }
 
-.about {
-  position: absolute;
+.header::before {
+  content: "";
+  display: block;
+  position: relative;
+  top: 0px;
+  width: 100px;
+  height: 3px;
+  margin-right: 10px;
+  background-color: var(--mantine-color-indigo-4);
 }
 
-.footer {
-  position: absolute;
+.header::after {
+  content: "";
+  display: block;
+  position: relative;
+  top: 0px;
+  width: 100px;
+  height: 3px;
+  margin-left: 10px;
+  background-color: var(--mantine-color-indigo-4);
+}
+
+.header_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 30px 0;
+
+  @media (max-width: 1224px) and (orientation: portrait) {
+    margin: 0 auto;
+    width: 80%;
+  }
 }

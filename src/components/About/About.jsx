@@ -16,7 +16,7 @@ function About() {
             </Group>
 
             <div className={classes.about_container}>
-                <Title order={1} className={classes.header}>About</Title>
+                <Title order={1} className={global.header}>About</Title>
                 <Text>
                     My name is Jeremy, and I enjoy developing and delivering products. I leveraged my Mathematics of Computation degree from the <Anchor href="https://www.ucla.edu/" title="University of California, Los Angeles" /> to secure a Software Engineer position at <Anchor href="https://omafertility.com/" title="Oma Fertility" /> There, I helped develop frontend interfaces and robotic algorithms for our Spermatoza Select Application, a software tool used within embryologist clinics to classify spermatozoa healthiness in real time. My notable achievements include:
                 </Text>

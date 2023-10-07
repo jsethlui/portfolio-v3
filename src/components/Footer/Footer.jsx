@@ -14,7 +14,7 @@ function Footer() {
                       <IconClickable icon={<UilCodeBranch />} href="https://github.com/jsethlui/portfolio-v3" />]
 
     return (
-        <Container classNames={classes.container}>
+        <Container className={classes.container}>
             <IconContainer icons={allIcons} />
             <Container>
                 <a target="_blank"
