@@ -1,7 +1,8 @@
 
 import { Group, Image, Title, Text, List } from '@mantine/core'
 import Anchor from '/src/components/Anchor/Anchor.jsx'
-import about from '/src/assets/about.jpg'
+import AboutImage from '/src/assets/about.jpg'
+import Resume from '/src/assets/publicResume.pdf'
 import global from '/src/components/App/App.module.css'
 import classes from '/src/components/About/About.module.css'
 
@@ -11,11 +12,11 @@ function About() {
             <Group className={classes.image_container}>
                 <a target="_blank"
                    href="https://www.linkedin.com/in/jeremylouie98/">
-                    <Image className={classes.image} src={about} />
+                    <Image className={classes.image} src={AboutImage} />
                 </a>
             </Group>
 
-            <div className={classes.about_container}>
+            <Group className={classes.about_container}>
                 <Title order={1} className={global.header}>About</Title>
                 <Text>
                     My name is Jeremy, and I enjoy developing and delivering products. I leveraged my Mathematics of Computation degree from the <Anchor href="https://www.ucla.edu/" title="University of California, Los Angeles" /> to secure a Software Engineer position at <Anchor href="https://omafertility.com/" title="Oma Fertility" /> There, I helped develop frontend interfaces and robotic algorithms for our Spermatoza Select Application, a software tool used within embryologist clinics to classify spermatozoa healthiness in real time. My notable achievements include:
@@ -31,7 +32,22 @@ function About() {
                 <Text>
                     I have experience in developing, maintaining, and delivering products. I am seeking positions where I can continue refining my industry knowledge in design principles and frameworks. If you are interested in connecting, let's <Anchor href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=%6A%73%65%74%68%6C%75%69%40%67%2E%75%63%6C%61%2E%65%64%75" title="chat!" />
                 </Text>
-            </div>
+
+                <Group className={classes.button_container}>
+                    {/* @todo: change these to Anchor tag */}
+                    <a target="_blank"
+                    href={Resume}
+                    className={classes.button}>
+                        Resume
+                    </a>
+
+                    <a target="_blank"
+                    href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=%6A%73%65%74%68%6C%75%69%40%67%2E%75%63%6C%61%2E%65%64%75"
+                    className={classes.button}>
+                        Contact
+                    </a>
+                </Group>
+            </Group>
         </Group>
     )
 }
