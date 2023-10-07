@@ -10,10 +10,8 @@ import global from '/src/components/App/App.module.css'
 
 function Projects() {
 
-    const zoomieIcons = [<IconClickable icon={<UilGithub />} href="https://github.com/cs130-w22/Group-B1" />,
-                         <IconClickable icon={<UilExternalLinkAlt />} href="https://github.com/cs130-w22/Group-B1" />]
-    const rungeKuttaIcons = [<IconClickable icon={<UilGithub />} href="https://github.com/jsethlui/What-is-the-best-Runge-Kutta-Method-" />,
-                             <IconClickable icon={<UilExternalLinkAlt />} href="https://github.com/jsethlui/What-is-the-best-Runge-Kutta-Method-/blob/main/4th_Order_Runge_Kutta_Method_Analysis.ipynb" />]
+    const zoomieIcons = [<IconClickable icon={<UilGithub />} href="https://github.com/cs130-w22/Group-B1" />]
+    const rungeKuttaIcons = [<IconClickable icon={<UilGithub />} href="https://github.com/jsethlui/What-is-the-best-Runge-Kutta-Method-" />]
 
     return (
         <Container className={classes.container}>

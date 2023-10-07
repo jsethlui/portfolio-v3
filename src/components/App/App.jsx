@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <Intro />
       <About id="#about" />
       <Experience id="#experience" />
