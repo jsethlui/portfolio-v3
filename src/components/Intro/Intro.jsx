@@ -10,7 +10,19 @@ import { UilLinkedin, UilGithub, UilEnvelopeAlt } from '@iconscout/react-unicons
 import global from '/src/components/App/App.module.css'
 import classes from '/src/components/Intro/Intro.module.css'
 
-function Intro() {
+function Avatar() {
+    return (
+        <Group className={classes.image_container}>
+            <a className={classes.linkedin_anchor}
+            target="_blank"
+            href="https://www.linkedin.com/in/jeremylouie98/">
+                <Image className={classes.image} src={avatar} />
+            </a>
+        </Group>
+    )
+}
+
+function Intro({ showAvatar=true }) {
 
     const iconSize = 35    // pixels
     const allIcons = [<IconClickable icon={<UilLinkedin />} href="https://www.linkedin.com/in/jeremylouie98/" size={iconSize} />,
@@ -44,13 +56,7 @@ function Intro() {
                 <IconContainer icons={allIcons} />
             </Group>
 
-            <Group className={classes.image_container}>
-                    <a className={classes.linkedin_anchor}
-                    target="_blank"
-                    href="https://www.linkedin.com/in/jeremylouie98/">
-                        <Image className={classes.image} src={avatar} />
-                    </a>
-            </Group>
+            {showAvatar ? <Avatar /> : <></> }
         </Group>
     )
 }

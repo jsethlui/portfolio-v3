@@ -1,8 +1,8 @@
 
-import { Group } from '@mantine/core'
+import { Group, Stack } from '@mantine/core'
 import classes from '/src/components/IconContainer/IconContainer.module.css'
 
-function IconContainer({ icons }) {
+function IconContainer({ icons, isHorizontal=true }) {
 
     const iconsRendered = icons.map(icon => {
         return (
@@ -13,10 +13,24 @@ function IconContainer({ icons }) {
         )
     })
 
+    function renderHorizontal() {
+        return (
+            <Group className={classes.icon_container}>
+                {iconsRendered}
+            </Group>
+        )
+    }
+
+    function renderVertical() {
+        return (
+            <Stack className={classes.icon_container}>
+                {iconsRendered}
+            </Stack>
+        )
+    }
+
     return (
-        <Group className={classes.icon_container}>
-            {iconsRendered}
-        </Group>
+        isHorizontal ? renderHorizontal() : renderVertical()
     )
 }
 

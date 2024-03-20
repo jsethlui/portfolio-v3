@@ -1,5 +1,6 @@
 
 import Intro from '/src/components/Intro/Intro.jsx'
+import Chatbot from '/src/components/Chatbot/Chatbot.jsx'
 import Navigation from '/src/components/Navigation/Navigation.jsx'
 import About from '/src/components/About/About.jsx'
 import Experience from '/src/components/Experience/Experience.jsx'
@@ -12,11 +13,12 @@ function App() {
   return (
     <>
       {/* <Navigation /> */}
-      <Intro />
-      <About id="#about" />
-      <Experience id="#experience" />
-      <Projects id="#projects" />
-      <Footer />
+      <Chatbot />
+      {/* <Intro /> */}
+      {/* <About id="#about" /> */}
+      {/* <Experience id="#experience" /> */}
+      {/* <Projects id="#projects" /> */}
+      {/* <Footer /> */}
     </>
   );
 }
