@@ -1,58 +1,9 @@
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    margin: 100px auto;
-    text-align: left;
-
-    @media (max-width: 1224px) and (orientation: portrait) {
-        margin: 200px auto;
+@keyframes growHeight {
+    from {
+      max-height: 0;
     }
-}
-
-.content_container {
-    margin: 0 0 0 0;
-    width: 80vw;
-    background-color: blue !important;
-    display: flex;
-
-    @media (max-width: 1224px) and (orientation: portrait) {
-        width: 80%;
+    to {
+      max-height: 100%; /* Adjust this value based on your desired height */
     }
-}
-
-.blob_container {
-    position: relative;
-    top: 0px;
-    height: auto;
-    width: 50%;
-}
-
-.image {
-    position: absolute;
-}
-
-.icon_container {
-    position: absolute;
-    top: -200px;
-    border: 1px solid red;
-}
-
-.chatbot_container {
-    position: relative;
-    top: 0;
-    left: 0;
-
-    height: auto;
-    width: 100%;
-    background-color: orange !important;
-}
-
-.typewriter {
-    position: relative;
-    top: 0;
-    left: 0;
-    text-align: left;
-}
+  }
