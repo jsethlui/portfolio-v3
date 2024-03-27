@@ -1,9 +1,17 @@
 
-@keyframes growHeight {
-    from {
-      max-height: 0;
-    }
-    to {
-      max-height: 100%; /* Adjust this value based on your desired height */
-    }
-  }
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #93c5fd;
+  border-radius: 10px;
+}
