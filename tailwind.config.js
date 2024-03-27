@@ -6,9 +6,7 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        'custom-blue': '#91A7FF', // Replace with your hex code
-      },
+      
     },
   },
   plugins: [],
