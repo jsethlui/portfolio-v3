@@ -14,7 +14,7 @@ import styles from '/src/components/Chatbot/Chatbot.module.css'
 
 function Response({ data }) {
     return (
-        <div class="bg-blue-300 text-left max-w-md p-3 mt-5 mb-8 ml-8 mr-auto rounded-md sm:rounded-lg">
+        <div class="bg-blue-300 text-left max-w-md p-3 mt-5 mb-8 ml-8 mr-auto rounded-md sm:rounded-lg   animate-fade-down animate-once animate-duration-500 animate-delay-0 animate-ease-in-out">
             {import.meta.env.VITE_DEBUG === "true" ? data : <Typewriter options={{ strings: data,
                             cursor: "",
                             autoStart: true,
@@ -26,7 +26,7 @@ function Response({ data }) {
 
 function Query({ data }) {
     return (
-        <div class="bg-neutral-300 text-right w-max p-3 mt-5 mb-8 ml-auto mr-5 rounded-md sm:rounded-lg">
+        <div class="bg-neutral-300 text-right w-max p-3 mt-5 mb-8 ml-auto mr-5 rounded-md sm:rounded-lg   animate-fade-down animate-once animate-duration-500 animate-delay-0 animate-ease-in-out">
             {import.meta.env.VITE_DEBUG === "true" ? data : <Typewriter options={{ strings: data,
                             cursor: "",
                             autoStart: true,
@@ -39,7 +39,7 @@ function Query({ data }) {
 function AssetRow({ title, image, hyperlink="", body }) {
 
     return (
-        <div class="bg-neutral-200   relative flex p-5 m-5 rounded-[20px]">
+        <div class="bg-neutral-200   relative flex p-5 m-5 rounded-[20px]   animate-fade-right animate-once animate-duration-500 animate-delay-500 animate-ease-in-out">
             <div class="flex flex-col justify-center   mr-6 ">
                 <a href={hyperlink} target = "_blank" class="min-h-[150px] w-[200px] ">
                     <img class="object-cover   rounded-[10px]" src={image} />
@@ -56,10 +56,12 @@ function AssetRow({ title, image, hyperlink="", body }) {
 
 function Assets( {context=""} ) {
 
+    const [allAssets, setAllAssets] = useState()
+
     const render = () => {
         if (context.includes("Oma Robotics")) {
             return (
-                <div class="flex flex-col justify-center">
+                <div>
                     <AssetRow title="Oma Fertility Opens Three State-of-the-Art Clinics"
                         image={omaClinic}
                         hyperlink="https://finance.yahoo.com/news/oma-fertility-opens-three-state-130000167.html"
@@ -75,7 +77,7 @@ function Assets( {context=""} ) {
             )
         } else if (context.includes("Juni Learning")) {
             return (
-                <div class="flex flex-col justify-center">
+                <div>
                     <AssetRow title="Juni Learning"
                         image={juniLogo}
                         hyperlink="https://junilearning.com/coding-for-kids/"
@@ -91,7 +93,7 @@ function Assets( {context=""} ) {
             )
         } else {
             return (
-                <div class="flex flex-col justify-center">
+                <div>
                     <AssetRow title="LinkedIn"
                         image={avatar}
                         hyperlink="https://www.linkedin.com/in/jeremylouie98/"
@@ -106,6 +108,7 @@ function Assets( {context=""} ) {
                 </div>
             )
         }
+        return allAssets
     }
 
     return (
