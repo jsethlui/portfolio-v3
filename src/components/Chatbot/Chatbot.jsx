@@ -39,9 +39,9 @@ function Query({ data }) {
 function AssetRow({ title, image, hyperlink="", body }) {
 
     return (
-        <div class="bg-neutral-200   relative flex p-5 m-5 rounded-[20px]   animate-fade-right animate-once animate-duration-500 animate-delay-500 animate-ease-in-out">
+        <div class="bg-neutral-200   relative flex p-5 m-10 rounded-[20px]   shadow-xl text-gray-900   animate-fade-right animate-once animate-duration-500 animate-delay-[500ms] animate-ease-in-out">
             <div class="flex flex-col justify-center   mr-6 ">
-                <a href={hyperlink} target = "_blank" class="min-h-[150px] w-[200px] ">
+                <a href={hyperlink} target = "_blank" class="min-h-[150px] w-[200px]   shadow-xl text-gray-900">
                     <img class="object-cover   rounded-[10px]" src={image} />
                 </a>
             </div>
@@ -108,7 +108,6 @@ function Assets( {context=""} ) {
                 </div>
             )
         }
-        return allAssets
     }
 
     return (
@@ -163,37 +162,35 @@ function Chatbot() {
     }
 
     return (
-        <>
-            <div class="bg-neutral-200">
-                <div class="flex">
-                    <div class="bg-neutral-400   m-5 rounded-[24px] w-[50rem]   flex justify-center items-center">
-                        {assets}
+        <div class="w-[80rem]">
+            <div class="flex">
+                <div class="m-5 rounded-[24px] w-[50rem]   flex justify-center items-center">
+                    {assets}
+                </div>
+
+                <div class="p-5">
+                    <div class="bg-neutral-100   min-w-[35rem] min-h-[35rem] max-h-[35rem] ml-5 overflow-y-auto rounded-[24px]">
+                        {allResponses.map(r => {
+                            if (r["type"] === "response") {
+                                return <Response data={r["data"]} />
+                            } else {
+                                return <Query data={r["data"]} />
+                            }
+                        })}
                     </div>
 
-                    <div class="p-5">
-                        <div class="bg-neutral-100   min-w-[35rem] min-h-[35rem] max-h-[35rem] ml-5 overflow-y-auto rounded-[24px]">
-                            {allResponses.map(r => {
-                                if (r["type"] === "response") {
-                                    return <Response data={r["data"]} />
-                                } else {
-                                    return <Query data={r["data"]} />
-                                }
-                            })}
-                        </div>
-
-                        <div class="w-[95%] ml-auto mr-auto">
-                            <input class="bg-neutral-100   min-w-full m-3 pl-5 pr-4 pt-3 pb-3 outline-none rounded-full"
-                                    type="text"
-                                    placeholder="Ask me something"
-                                    disabled={disableQuerying}
-                                    value={value}
-                                    onChange={onChange}
-                                    onKeyDown={onKeyDown} />
-                        </div>
+                    <div class="w-[95%] ml-auto mr-auto">
+                        <input class="bg-neutral-100   min-w-full m-3 pl-5 pr-4 pt-3 pb-3 outline-none rounded-full"
+                                type="text"
+                                placeholder="Ask me something"
+                                disabled={disableQuerying}
+                                value={value}
+                                onChange={onChange}
+                                onKeyDown={onKeyDown} />
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
