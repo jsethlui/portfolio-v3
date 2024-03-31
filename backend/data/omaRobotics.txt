@@ -1,0 +1,2 @@
+
+Oma Robotics is a medical manufacturing start up committed to improving in-vitro fertilization (IVF) success rates using artificial intelligence and robotics. Oma Robotics had clinics nationwide, and each clinic uses a software called the Sperm Select App. Using artifical intelligence, SSA is able to tell embryologists whether a candidate sperm cell is healthy or unhealthy. Using robotics, SSA is also able to function as a controller to begin fully-automated IVF using robotics
