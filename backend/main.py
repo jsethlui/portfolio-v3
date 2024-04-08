@@ -1,4 +1,6 @@
 
+import os
+from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
@@ -12,15 +14,8 @@ from langchain_community.document_loaders import PyPDFLoader, TextLoader
 from langchain_community.vectorstores import Chroma
 from langchain.text_splitter import CharacterTextSplitter
 
-reviewChain = None
 app = Flask(__name__)
 CORS(app)
-
-API_KEY = "AIzaSyAjDd5GTShTqLlsDN2Okyx3bLDMQ-8Dke0"
-
-CHUNK_SIZE = 1000
-CHUNK_OVERLAP = 0
-CHROMA_PATH = "chroma_data"
 
 def setUpRetriever(k=10):
     # File name --> Document loader type
@@ -28,7 +23,7 @@ def setUpRetriever(k=10):
         "data/jeremyLouieResume.pdf": PyPDFLoader,
     }
 
-    embedding_function = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=API_KEY)
+    embedding_function = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=os.getenv("API_KEY"))
     for key in mapping:
         loader = mapping[key](key)
         document = loader.load()
@@ -41,23 +36,8 @@ def setUpRetriever(k=10):
     retriever = database.as_retriever(k=k)
     return retriever
 
-@app.route("/", methods=["POST"])
-def sendQuery():
-    rq = request.get_json()
-    query = rq.get("query")
-
-    global reviewChain
-    if (reviewChain is not None):
-        response = reviewChain.invoke(query)
-    else:
-        response = "reviewChain=none"
-
-    data = {"response": response}
-    return jsonify(data)
-
-@app.route("/")
-def main():
-    chat = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=API_KEY, temperature=0, convert_system_message_to_human=True)
+def spinLLM():
+    chat = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=os.getenv("API_KEY"), temperature=0, convert_system_message_to_human=True)
     template = """
                Your job is to answer questions about my professional software engineering experience and who I am as a person.
 
@@ -96,8 +76,32 @@ def main():
     global reviewChain
     reviewChain = {"context": retriever, "question": RunnablePassthrough()} | promptTemplate | chat | outputParser
 
-    output = str(reviewChain)
-    return output
+@app.route("/", methods=["POST"])
+def sendQuery():
+    rq = request.get_json()
+    query = rq.get("query")
+
+    global reviewChain
+    if (reviewChain is not None):
+        response = reviewChain.invoke(query)
+    else:
+        response = "reviewChain=none"
+
+    data = {"response": response}
+    return jsonify(data)
+
+@app.route("/")
+def main():
+    global reviewChain
+    return "Success" if (reviewChain is not None) else "Fail"
 
 if __name__ == "__main__":
-    app.run(debug=True, host='localhost', port=5001)
+    load_dotenv()
+    reviewChain = None
+
+    CHUNK_SIZE = 1000
+    CHUNK_OVERLAP = 0
+    CHROMA_PATH = "chroma_data"
+
+    spinLLM()
+    app.run(debug=True, host='0.0.0.0', port=5001)
