@@ -1,0 +1,20 @@
+log: false                      # Options: bool
+debug: false                    # Options: bool
+
+ai:
+  temperature: 0                # Options: int [0, ..., 9]
+  template: |                   # Options: string
+    Your job is to answer questions about my professional software engineering experience and who I am as a person.
+
+    Be as detailed as possible, but do not make up any information that is not known from the context.
+
+    Please answer queries in first-person, as if you were me.
+
+    If you do not know the answer to a query, please apologize and mention that you can only answer queries only about me about my professional background
+
+chroma:
+  path: chroma_data             # Options: string
+
+chunk:
+  size: 1000                    # Options: int
+  overlap: 0                    # Options: int

@@ -1,4 +1,0 @@
-
-My name is Jeremy, and I previously wrote code to increase fertility success rates nationwide. As a Software Engineer at Oma Robotics, I used C++ to do two things: (1) implement user interface features to assist fertility doctors with medical procedures and (2) develop robotic algorithms in order to fully automate in-vitro fertilization. I enjoyed using C++ to develop solutions and help parents create families. I enjoy writing code knowing that it's impactful. In my next role, I am looking to apply my technical expertise to create solutions and generate impact
-
-Outside of programming, I enjoy fitness as a hobby. I previously competed in dragon boat, and currently train a small clientele to help clients achieve their fitness goals

@@ -12,13 +12,13 @@ function App() {
 
   return (
     <>
-      {/* <Navigation /> */}
+      <Navigation />
+      <Intro />
       <Chatbot />
-      {/* <Intro /> */}
-      {/* <About id="#about" /> */}
-      {/* <Experience id="#experience" /> */}
-      {/* <Projects id="#projects" /> */}
-      {/* <Footer /> */}
+      <About id="#about" />
+      <Experience id="#experience" />
+      <Projects id="#projects" />
+      <Footer />
     </>
   );
 }

@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Typewriter from 'typewriter-effect'
 import { UilExternalLinkAlt } from '@iconscout/react-unicons'
 
@@ -14,7 +14,7 @@ import styles from '/src/components/Chatbot/Chatbot.module.css'
 
 function Response({ data }) {
     return (
-        <div class="bg-blue-300 text-left max-w-md p-3 mt-5 mb-8 ml-8 mr-auto rounded-md sm:rounded-lg   animate-fade-down animate-once animate-duration-500 animate-delay-0 animate-ease-in-out">
+        <div class="bg-blue-300 text-left w-max max-w-sm p-3 mt-5 mb-8 ml-8 mr-auto rounded-md sm:rounded-lg   animate-fade-down animate-once animate-duration-500 animate-delay-0 animate-ease-in-out">
             {import.meta.env.VITE_DEBUG === "true" ? data : <Typewriter options={{ strings: data,
                             cursor: "",
                             autoStart: true,
@@ -26,7 +26,7 @@ function Response({ data }) {
 
 function Query({ data }) {
     return (
-        <div class="bg-neutral-300 text-right w-max p-3 mt-5 mb-8 ml-auto mr-5 rounded-md sm:rounded-lg   animate-fade-down animate-once animate-duration-500 animate-delay-0 animate-ease-in-out">
+        <div class="bg-neutral-300 text-left w-max max-w-sm p-3 mt-5 mb-8 ml-auto mr-5 rounded-md sm:rounded-lg   animate-fade-down animate-once animate-duration-500 animate-delay-0 animate-ease-in-out">
             {import.meta.env.VITE_DEBUG === "true" ? data : <Typewriter options={{ strings: data,
                             cursor: "",
                             autoStart: true,
@@ -118,6 +118,7 @@ function Assets( {context=""} ) {
 }
 
 function Chatbot() {
+
     const start = {
         "type": "response",
         "data": "Hi, feel free to ask anything regarding my professional career and I'll do my best to respond! For any questions you might have, I'll do my best to attach some helpful resources on the left."
@@ -128,6 +129,16 @@ function Chatbot() {
     const [allResponses, setAllResponses] = useState([start])
     const [assets, setAssets] = useState(<Assets context="" />)
 
+    const messagesEndReference = useRef(null);
+
+    const scrollToBottom = () => {
+        // messagesEndReference.current?.scrollIntoView({ behavior: "smooth" })
+      }
+
+    useEffect(() => {
+        scrollToBottom()
+    }, [allResponses]);
+
     const onChange = (event) => {
         setValue(event.target.value)
     }
@@ -135,16 +146,14 @@ function Chatbot() {
     const onKeyDown = (event) => {
         if (event.key === "Enter") {
             if (value.trim().length === 0) {
-                console.log("Whitespace query foound, will not process")
+                console.log("Whitespace query found, will not process")
             } else {
                 setDisableQuerying(true)
                 setAllResponses(allResponses => [...allResponses, {"type": "query", "data": value}] )
 
                 const options = {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
+                    headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({"query": value})
                 }
 
@@ -152,7 +161,7 @@ function Chatbot() {
                     .then((response) => response.json())
                     .then((data) => {
                         setAllResponses(allResponses => [...allResponses, {"type": "response", "data": data["response"]}] )
-                        setAssets(<Assets context={value} />)
+                        setAssets(<Assets context={value + data["response"]} />)    // Generate assets based on query and response
                         setDisableQuerying(false)
                     })
                     .catch((error) => console.error(error))
@@ -177,6 +186,7 @@ function Chatbot() {
                                 return <Query data={r["data"]} />
                             }
                         })}
+                        <div ref={messagesEndReference} />
                     </div>
 
                     <div class="w-[95%] ml-auto mr-auto">

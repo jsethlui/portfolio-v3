@@ -1,5 +1,10 @@
 
+'''
+curl --header "Content-type: application/json" --request POST --data '{"query": "Tell me about Jeremy in five sentences or less"}' 127.0.0.1:5001 
+'''
+
 import os
+import yaml
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -17,13 +22,20 @@ from langchain.text_splitter import CharacterTextSplitter
 app = Flask(__name__)
 CORS(app)
 
+TEMPERATURE = None
+TEMPLATE = None
+CHUNK_SIZE = None
+CHUNK_OVERLAP = None
+CHROMA_PATH = None
+
 def setUpRetriever(k=10):
     # File name --> Document loader type
     mapping = {
         "data/jeremyLouieResume.pdf": PyPDFLoader,
+        "data/omaRobotics.txt": TextLoader
     }
 
-    embedding_function = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=os.getenv("API_KEY"))
+    embeddingFunction = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=os.getenv("API_KEY"))
     for key in mapping:
         loader = mapping[key](key)
         document = loader.load()
@@ -31,29 +43,35 @@ def setUpRetriever(k=10):
         # Split document into chunks and add to vectorstore
         textSplitter = CharacterTextSplitter(chunk_size=CHUNK_SIZE, chunk_overlap=CHUNK_OVERLAP)
         text = textSplitter.split_documents(document)
-        database = Chroma.from_documents(text, embedding_function)
+        database = Chroma.from_documents(text, embeddingFunction)
 
     retriever = database.as_retriever(k=k)
     return retriever
 
 def spinLLM():
-    chat = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=os.getenv("API_KEY"), temperature=0, convert_system_message_to_human=True)
-    template = """
-               Your job is to answer questions about my professional software engineering experience and who I am as a person.
+    # |
+    # |      c1
+    # |            q
+    # |
+    # |
+    # |
+    # |               c2
+    # | c0
+    # |____________________
 
-               Be as detailed as possible, but do not make up any information that is not known from the context.
+    global TEMPERATURE
+    global TEMPLATE
+    global CHROMA_PATH
+    global CHUNK_SIZE
+    global CHUNK_OVERLAP
 
-               Please answer queries in first-person, as if you were me.
-
-               If you do not know the answer to a query, please apologize and mention that you can only answer queries only about me about my professional background
-
-               {context}
-               """
+    chat = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=os.getenv("API_KEY"), temperature=TEMPERATURE, convert_system_message_to_human=True)
+    TEMPLATE += "{context}"
 
     systemPrompt = SystemMessagePromptTemplate(
         prompt=PromptTemplate(
             input_variables=["context"],
-            template=template
+            template=TEMPLATE
         )
     )
 
@@ -96,12 +114,18 @@ def main():
     return "Success" if (reviewChain is not None) else "Fail"
 
 if __name__ == "__main__":
-    load_dotenv()
     reviewChain = None
+    load_dotenv()   # Load API key
+    with open("config.yaml") as config:
+        data = yaml.safe_load(config)
 
-    CHUNK_SIZE = 1000
-    CHUNK_OVERLAP = 0
-    CHROMA_PATH = "chroma_data"
+        TEMPERATURE = data["ai"]["temperature"]
+        TEMPLATE = data["ai"]["template"]
+
+        CHUNK_SIZE = int(data["chunk"]["size"])
+        CHUNK_OVERLAP = int(data["chunk"]["overlap"])
+
+        CHROMA_PATH = data["chroma"]["path"]
 
     spinLLM()
     app.run(debug=True, host='0.0.0.0', port=5001)

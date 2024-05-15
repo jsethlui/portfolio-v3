@@ -1,2 +1,29 @@
+Oma Robotics is a MedTech startup committed to improving fertility success rates nationwide using artificial intelligence and robotics
+Oma Robotics improved fertility success rates on both the robotics and software side
+On the robotics side, Oma Robotics sought to automate in-vitro fertilization procedures by replacing embryologists with robotics.
+On the software side, Oma Robotics has a medical Linux application software used by fertility doctors nationwide. Users are able to examine candidate sperm cells, and determine their health levels using artificial intelligence. This software was crucial for fertility procedures since it served as a second opinion tool for doctors
+Day-to-day tools include C++20 and Qt Framework for software development, Git for standard version control, Linux for hosting and developing our software, and Python for automated scripting
+Software testing involved manual testing on actual donor sperm cells and oocytes
 
-Oma Robotics is a medical manufacturing start up committed to improving in-vitro fertilization (IVF) success rates using artificial intelligence and robotics. Oma Robotics had clinics nationwide, and each clinic uses a software called the Sperm Select App. Using artifical intelligence, SSA is able to tell embryologists whether a candidate sperm cell is healthy or unhealthy. Using robotics, SSA is also able to function as a controller to begin fully-automated IVF using robotics
+Sperm Healthiness by Morphology
+Fertility doctors use Oma Robotic's medical application software to determine sperm cell health levels
+At the time, the software was only capable of determining holistic health levels for sperm cell candidates
+Fertility doctors were unable to understand why a sperm cell might be healthy
+For example: a sperm cell might holistically look healthy, but this might be due to the sperm head looks healthy, the neck looks healthy, but the tail is unhealthy
+I was responsible for developing a new user interface that shows health levels by sperm cell morphology (i.e. show that the head is healthy, tail is unhealthy, etc)
+Our Engineering team already had a new AI in-place that makes these decisions in the backend
+At a high level, that means a lot of the work in developing this featured featuring the AI decisions to the frontend
+In the end, I developed a novel UI feature where fertility doctors can see two new things: (1) Individual healthy levels by classification and (2) histogram data of how the health decisions are made
+Fertility doctors would now able to see what makes a sperm cell healthy or unhealthy
+This UI feature was presented to investors in order to feature major software developments
+
+Real-time Monitoring Dashboard
+Fertility doctors use Oma Robotic's medical application software to determine sperm cell health levels
+This software is crucial for fertility procedures
+Sometimes, fertility doctors were unable to use the software due to fatal bugs
+I was responsible for developing a real-time monitoring platform that centralizes all important information so that bugs can be detected and solved more quickly
+The biggest challenge was that this project required strong expertise of SQL for data visualization
+Despite having limited knowledge, I managed to create several new dashboards featuring GPU usage trends over time, and number of errors per each system log file (to name a few)
+To stay ahead of issues, I also integrated an alert notification system using Slack Bots
+Fatal software bugs were now able to be detected ahead of time, allowing fertility doctors to use our medical software without issue
+

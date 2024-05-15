@@ -1,5 +1,0 @@
-
-I built this chatbot using LangChain to leverage large language models, Flask for the backend, and
-ReactJS for the frontend. I specifically opted for Google's Gemini model in order to take full advantage of their free tier. 
-
-The Flask backend starts up the model,
