@@ -96,6 +96,7 @@ def spinLLM():
 
 @app.route("/", methods=["POST"])
 def sendQuery():
+    
     rq = request.get_json()
     query = rq.get("query")
 
