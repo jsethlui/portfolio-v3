@@ -22,8 +22,16 @@ from langchain.text_splitter import CharacterTextSplitter
 app = Flask(__name__)
 CORS(app)
 
+reviewChain = None
+
+LOG = None
+FLASK_DEBUG = None
+HOSTNAME = None
+PORT = None
+
 TEMPERATURE = None
 TEMPLATE = None
+
 CHUNK_SIZE = None
 CHUNK_OVERLAP = None
 CHROMA_PATH = None
@@ -94,19 +102,21 @@ def spinLLM():
     global reviewChain
     reviewChain = {"context": retriever, "question": RunnablePassthrough()} | promptTemplate | chat | outputParser
 
-@app.route("/", methods=["POST"])
-def sendQuery():
-    
-    rq = request.get_json()
-    query = rq.get("query")
+@app.route("/query/<query>", methods=["GET", "POST"])
+def sendQuery(query):
+    if (query):
+        userQuery = query.replace("_", " ") # Remove delimiter
+    else:
+        rq = request.get_json()
+        userQuery = rq.get("query")
 
     global reviewChain
     if (reviewChain is not None):
-        response = reviewChain.invoke(query)
+        response = reviewChain.invoke(userQuery)
     else:
         response = "reviewChain=none"
 
-    data = {"response": response}
+    data = {"query": userQuery, "response": response}
     return jsonify(data)
 
 @app.route("/")
@@ -115,18 +125,21 @@ def main():
     return "Success" if (reviewChain is not None) else "Fail"
 
 if __name__ == "__main__":
-    reviewChain = None
     load_dotenv()   # Load API key
     with open("config.yaml") as config:
         data = yaml.safe_load(config)
+
+        LOG = bool(data["app"]["log"])
+        FLASK_DEBUG = bool(data["app"]["flaskDebug"])
+        HOSTNAME = data["app"]["hostname"]
+        PORT = int(data["app"]["port"])
 
         TEMPERATURE = data["ai"]["temperature"]
         TEMPLATE = data["ai"]["template"]
 
         CHUNK_SIZE = int(data["chunk"]["size"])
         CHUNK_OVERLAP = int(data["chunk"]["overlap"])
-
         CHROMA_PATH = data["chroma"]["path"]
 
     spinLLM()
-    app.run(debug=True, host='0.0.0.0', port=5001)
+    app.run(debug=FLASK_DEBUG, host=HOSTNAME, port=PORT)

@@ -1,5 +1,7 @@
-log: false                      # Options: bool
-debug: false                    # Options: bool
+app:
+  flaskDebug: true              # Options: bool
+  hostname: 0.0.0.0             # Options: string
+  port: 5001                    # Options: string
 
 ai:
   temperature: 0                # Options: int [0, ..., 9]
