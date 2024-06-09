@@ -4,6 +4,7 @@ curl --header "Content-type: application/json" --request POST --data '{"query": 
 '''
 
 import os
+import os.path
 import yaml
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
@@ -24,7 +25,7 @@ CORS(app)
 
 reviewChain = None
 
-LOG = None
+DATA_DIRECTORY = None
 FLASK_DEBUG = None
 HOSTNAME = None
 PORT = None
@@ -36,12 +37,20 @@ CHUNK_SIZE = None
 CHUNK_OVERLAP = None
 CHROMA_PATH = None
 
+def fileExtensionToLoaderLookup(fileName):
+    if (fileName.endswith(".pdf" )):
+        return PyPDFLoader
+    if (fileName.endswith(".txt")):
+        return TextLoader
+
 def setUpRetriever(k=10):
-    # File name --> Document loader type
-    mapping = {
-        "data/jeremyLouieResume.pdf": PyPDFLoader,
-        "data/omaRobotics.txt": TextLoader
-    }
+    global DATA_DIRECTORY
+    mapping = {}    # File name --> Document loader type
+    for root, directories, files in os.walk(DATA_DIRECTORY):
+        for name in files:
+            currFileAbsolutePath = os.path.join(root, name)
+            if (not currFileAbsolutePath.endswith(".DS_Store")):
+                mapping[currFileAbsolutePath] = fileExtensionToLoaderLookup(currFileAbsolutePath)
 
     embeddingFunction = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=os.getenv("API_KEY"))
     for key in mapping:
@@ -129,7 +138,7 @@ if __name__ == "__main__":
     with open("config.yaml") as config:
         data = yaml.safe_load(config)
 
-        LOG = bool(data["app"]["log"])
+        DATA_DIRECTORY = data["app"]["dataDirectory"]
         FLASK_DEBUG = bool(data["app"]["flaskDebug"])
         HOSTNAME = data["app"]["hostname"]
         PORT = int(data["app"]["port"])
