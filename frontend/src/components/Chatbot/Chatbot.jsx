@@ -7,6 +7,8 @@ import Assets from '/src/components/Chatbot/Assets.jsx'
 import Query from '/src/components/Chatbot/Query.jsx'
 import Response from '/src/components/Chatbot/Response.jsx'
 
+import '/src/components/Chatbot/scrollbar.css'
+
 function Chatbot() {
 
     const start = {
@@ -41,7 +43,7 @@ function Chatbot() {
                     .then((response) => response.json())
                     .then((data) => {
                         setAllResponses(allResponses => [...allResponses, {"type": "response", "data": data["response"]}] )
-                        setAssets(<Assets context={value + data["response"]} />)    // Generate assets based on query and response
+                        setAssets(<Assets context={value + " " + data["response"]} />)    // Generate assets based on query and response
                         setDisableQuerying(false)
                     })
                     .catch((error) => console.error(error))
@@ -51,14 +53,12 @@ function Chatbot() {
     }
 
     return (
-        <div class="w-[80rem]">
+        <div class="ml-auto mr-auto">
             <div class="flex">
-                <div class="m-5 rounded-[24px] w-[50rem]   flex justify-center items-center">
-                    {assets}
-                </div>
+                {assets}
 
-                <div class="p-5">
-                    <div class="bg-neutral-100   min-w-[35rem] min-h-[35rem] max-h-[35rem] ml-5 overflow-y-auto rounded-[24px]">
+                <div class="min-w-[35rem]">
+                    <div class="bg-neutral-100 min-h-[35rem] w-full overflow-y-auto rounded-[24px] scroll">
                         {allResponses.map(r => {
                             if (r["type"] === "response") {
                                 return <Response data={r["data"]} />
@@ -77,6 +77,7 @@ function Chatbot() {
                                 onChange={onChange}
                                 onKeyDown={onKeyDown} />
                     </div>
+                    <p class="text-sm text-right">Version 1.0.0</p>
                 </div>
             </div>
         </div>

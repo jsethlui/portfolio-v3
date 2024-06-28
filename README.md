@@ -8,13 +8,15 @@
 
 4) Install all necessary modules using `python3 -m pip install -r requirements.txt`
 
-5) Run `python3 main.py` to begin the backend server
+5) Run `echo VITE_ENDPOINT="http://127.0.0.1:[PORT]/query\nVITE_DEBUG=true" > .env.local` within `frontend` directory
 
-6) Open [http:localhost:[PORT]](http://localhost:[PORT]) to view it in your browser.
+6) Run `python3 main.py` to begin the backend server
 
-7) If the AI bot is running successfully, you should be able to see "Success"
+7) Open [http:localhost:[PORT]](http://localhost:[PORT]) to view it in your browser.
 
-8) You can ask queries to the AI chat via two ways:
+8) If the AI bot is running successfully, you should be able to see "Success"
+
+9) You can ask queries to the AI chat via two ways:
    * cURL: run `curl localhost:[PORT] -d '{"query": QUERY}' -H 'Content-Type: application/json'`
    * GET endpoint: enter `http:localhost:[PORT]/query/[QUERY]`
      * `[QUERY]` must be delmited by `_`
@@ -22,7 +24,7 @@
 
     If successful, a JSON object with the format `{"query" [QUERY], "response}: [RESPONSE]` shall be returned
 
-9) Deactivate virtual environment `deactivate`
+10) Deactivate virtual environment `deactivate`
 
 # Frontend: Getting Started
 

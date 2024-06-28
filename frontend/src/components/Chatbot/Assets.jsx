@@ -9,8 +9,6 @@ import github from '/src/assets/github.png'
 
 function Assets( {context=""} ) {
 
-    const [allAssets, setAllAssets] = useState()
-
     const render = () => {
         if (context.includes("Oma Robotics")) {
             return (
@@ -73,9 +71,9 @@ function Assets( {context=""} ) {
 function AssetRow({ title, image, hyperlink="", body }) {
 
     return (
-        <div class="bg-neutral-200   flex p-5 m-10 rounded-[16px]   shadow-xl text-gray-900   animate-fade-right animate-once animate-duration-500 animate-delay-[500ms] animate-ease-in-out">
-            <div class="bg-transparent	      mr-6">
-                <a href={hyperlink} target = "_blank" class="flex items-center justify-center min-h-[150px] w-[200px]">
+        <div class="bg-neutral-200   flex p-5 m-10 max-w-[90%] rounded-[16px]   shadow-xl text-gray-900   animate-fade-right animate-once animate-duration-500 animate-delay-[500ms] animate-ease-in-out">
+            <div class="bg-transparent   mr-6">
+                <a href={hyperlink} target = "_blank" class="flex items-center justify-center min-h-[100px] w-[150px]">
                     <img class="object-cover   rounded-[10px]" src={image} />
                 </a>
             </div>

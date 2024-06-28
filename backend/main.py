@@ -65,7 +65,7 @@ def setUpRetriever(k=10):
     retriever = database.as_retriever(k=k)
     return retriever
 
-def spinLLM():
+def createRAG():
     # |
     # |      c1
     # |            q
@@ -111,11 +111,15 @@ def spinLLM():
     global reviewChain
     reviewChain = {"context": retriever, "question": RunnablePassthrough()} | promptTemplate | chat | outputParser
 
-@app.route("/query/<query>", methods=["GET", "POST"])
-def sendQuery(query):
-    if (query):
+@app.route("/query", methods=["POST"])
+@app.route("/query/<query>", methods=["GET"])
+def sendQuery(query=""):
+    if (request.method == "GET"):
+        if (not query):
+            return ('Invalid query, 404')
+
         userQuery = query.replace("_", " ") # Remove delimiter
-    else:
+    elif (request.method == "POST"):
         rq = request.get_json()
         userQuery = rq.get("query")
 
@@ -150,5 +154,5 @@ if __name__ == "__main__":
         CHUNK_OVERLAP = int(data["chunk"]["overlap"])
         CHROMA_PATH = data["chroma"]["path"]
 
-    spinLLM()
+    createRAG()
     app.run(debug=FLASK_DEBUG, host=HOSTNAME, port=PORT)
