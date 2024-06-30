@@ -12,9 +12,9 @@ function App() {
 
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <Intro />
-      <Chatbot />
+      <Chatbot id="#chatbot" />
       <About id="#about" />
       <Experience id="#experience" />
       <Projects id="#projects" />

@@ -53,7 +53,7 @@ function Chatbot() {
     }
 
     return (
-        <div class="ml-auto mr-auto">
+        <div class="ml-auto mr-auto mt-[400px] mb-[400px]">
             <div class="flex">
                 {assets}
 
